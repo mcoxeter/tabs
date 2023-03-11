@@ -33,7 +33,6 @@ export function Tab({
   }, [selected, ref]);
 
   const handleKeyboard = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-    console.log('Here');
     switch (event.key) {
       case 'ArrowLeft':
       case 'ArrowUp':
