@@ -5,7 +5,6 @@ import styles from './TabPanel.module.css';
 export interface TabMeta {
   id: string;
   caption: string;
-  disabled?: boolean;
 }
 
 export interface TabPanelProps {
