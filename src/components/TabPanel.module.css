@@ -1,0 +1,19 @@
+.dirRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.dirCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.horizontal {
+  margin: 0;
+  border-top: 1px grey solid
+}
+
+.vertical {
+  margin: 0;
+  border-left: 1px grey solid
+}

@@ -1,0 +1,38 @@
+.component {
+ --border-width: 2px;
+ background-color: white;
+ border: none; 
+ padding: 8px;
+ transition: all 0.5s ease;
+ text-align: end;
+ outline: 0;
+}
+
+.component.vertical {
+  border-right: var(--border-width) transparent solid;
+}
+.component.horizontal {
+  border-bottom: var(--border-width) transparent solid;
+}
+
+.component.vertical:hover {
+  border-right: var(--border-width) orange solid;
+}
+.component.horizontal:hover {
+  border-bottom: var(--border-width) orange solid;
+}
+
+.component.vertical.selected {
+  border-right: var(--border-width) black solid;
+}
+.component.horizontal.selected {
+  border-bottom: var(--border-width) black solid;
+}
+
+.component.vertical:focus {
+  border-right: 2px blue solid;
+}
+
+.component.horizontal:focus {
+  border-bottom: 2px blue solid;
+}
