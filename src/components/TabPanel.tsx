@@ -25,6 +25,7 @@ export function TabPanel({
   panelRender: panel
 }: TabPanelProps) {
   const [selected, setSelected] = useState<number>(0);
+  const maxIndex = tabMeta.length - 1;
 
   return (
     <div
@@ -32,7 +33,7 @@ export function TabPanel({
       style={{ width: 'fit-content' }}
     >
       <div className={vertical ? styles.dirCol : styles.dirRow}>
-        {leftRender ? leftRender() : null}
+        {leftRender?.() ?? null}
         <div
           role='tablist'
           className={vertical ? styles.dirCol : styles.dirRow}
@@ -47,23 +48,23 @@ export function TabPanel({
               onSelectNew={(dir) => {
                 switch (dir) {
                   case 'Next':
-                    setSelected(rotate(selected + 1, tabMeta.length - 1));
+                    setSelected(rotate(selected + 1, maxIndex));
                     break;
                   case 'Prev':
-                    setSelected(rotate(selected - 1, tabMeta.length - 1));
+                    setSelected(rotate(selected - 1, maxIndex));
                     break;
                   case 'Start':
-                    setSelected(rotate(selected + 999999, tabMeta.length - 1));
+                    setSelected(rotate(selected + 999999, maxIndex));
                     break;
                   case 'End':
-                    setSelected(rotate(selected - 999999, tabMeta.length - 1));
+                    setSelected(rotate(selected - 999999, maxIndex));
                     break;
                 }
               }}
             />
           ))}
         </div>
-        {rightRender ? rightRender() : null}
+        {rightRender?.() ?? null}
       </div>
       <div className={vertical ? styles.vertical : styles.horizontal} />
       <div role='tabpanel' className={styles.component}>
@@ -73,12 +74,12 @@ export function TabPanel({
   );
 }
 
-function rotate(newIndex: number, max: number): number {
-  if (newIndex > max) {
+function rotate(newIndex: number, maxIndex: number): number {
+  if (newIndex > maxIndex) {
     return 0;
   }
   if (newIndex < 0) {
-    return max;
+    return maxIndex;
   }
   return newIndex;
 }
